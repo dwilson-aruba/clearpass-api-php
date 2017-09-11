@@ -151,4 +151,5 @@ Errors will generate an exception.  This may be:
 		echo "\n";
 	}
 
-
+APIs are not wrapped or bundled; refer to the ClearPass API Explorer for
+details on what API to call and what parameters are expected.
