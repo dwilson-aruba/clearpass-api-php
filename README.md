@@ -7,6 +7,56 @@ A test driver (cpapi.php) is included that allows command-line usage of the
 API.
 
 
+# License
+
+Apache 2 license; see `LICENSE`
+
+Httpful (see http://phphttpclient.com/) is licensed under the MIT license.
+
+	Copyright (c) 2012 Nate Good <me@nategood.com>
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+PHP Docopt (see https://github.com/docopt/docopt.php) is licensed under the MIT license:
+
+	Copyright (c) 2012 Vladimir Keleshev, <vladimir@keleshev.com>
+	                   Blake Williams, <code@shabbyrobe.org>
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+
 # Quick Start
 
 You will need at least PHP 5.4 installed:
@@ -25,7 +75,7 @@ To use the REST API, first create an API client using the ClearPass Admin UI:
 * Navigate to Guest > Administration > API Services > API Clients
 * Create a new API Client
 * Select the appropriate operator profile
-* Select the "client_credentials" grant type
+* Select the `client_credentials` grant type
 * Make a note of the client ID and client secret
 
 To obtain an access token, use a command such as the following:
@@ -51,11 +101,11 @@ To verify the access token, perform an API request using it:
 
 HTTP 403 Forbidden will be returned if the token is invalid or expired.
 
-This is the basic client_credentials authorization grant type.  Other grant
+This is the basic `client_credentials` authorization grant type.  Other grant
 types are possible with OAuth2; for details, refer to RFC 6749.
 
 For convenience, you can save the access token in the environment
-variable "access_token":
+variable `access_token`:
 
     $ export access_token=9d368230c61fbe6e505e6da3e55447a401b47bf2
     $ ./cpapi.php --host clearpass.example.com GET /oauth/me
@@ -63,11 +113,11 @@ variable "access_token":
 
 # API Usage
 
-Start with this PHP require_once statement:
+Start with this PHP `require_once` statement:
 
 	require_once 'ClearPassApi.php';
 
-You can then create a ClearPass\Api\Client object to make API calls:
+You can then create a `ClearPass\Api\Client` object to make API calls:
 
 	$client = new ClearPass\Api\Client;
 	$client->host = 'clearpass.example.com';
@@ -86,10 +136,10 @@ The client provides methods for GET, POST, PATCH, PUT, and DELETE requests:
 
 Errors will generate an exception.  This may be:
 
-* A ClearPass\Api\ConfigurationException, indicating configuration problems
+* A `ClearPass\Api\ConfigurationException`, indicating configuration problems
 * An exception from the underlying Httpful library, e.g.
-  Httpful\Exception\ConnectionErrorException
-* A ClearPass\Api\Error object containing details of the error.
+  `Httpful\Exception\ConnectionErrorException`
+* A `ClearPass\Api\Error` object containing details of the error.
 
 	// PATCH generating a validation error:
 	try {
@@ -100,3 +150,5 @@ Errors will generate an exception.  This may be:
 		var_export($e->details);
 		echo "\n";
 	}
+
+
